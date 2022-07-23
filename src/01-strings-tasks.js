@@ -232,7 +232,7 @@ function getRectangleString(width, height) {
       else if(h === height){
         switch(w) {
           case 0: 
-          result += "+'└";
+          result += "'└";
           break;
           case width: 
           result += "┘\n'";
@@ -244,7 +244,7 @@ function getRectangleString(width, height) {
       else{
         switch(w) {
           case 0: 
-          result += "+'│";
+          result += "'│";
           break;
           case width: 
           result += "│\n'";
