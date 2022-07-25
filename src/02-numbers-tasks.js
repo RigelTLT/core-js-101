@@ -20,7 +20,7 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
-  //throw new Error('Not implemented');
+  // throw new Error('Not implemented');
   return Math.imul(width, height);
 }
 
@@ -37,8 +37,8 @@ function getRectangleArea(width, height) {
  *   0    => 0
  */
 function getCircleCircumference(radius) {
-  //throw new Error('Not implemented');
-  return radius*Math.PI*2;
+  // throw new Error('Not implemented');
+  return radius * Math.PI * 2;
 }
 
 /**
@@ -54,8 +54,8 @@ function getCircleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  //throw new Error('Not implemented');
-  return (value1+ value2)/2;
+  // throw new Error('Not implemented');
+  return (value1 / 2 + value2 / 2);
 }
 
 /**
@@ -74,8 +74,8 @@ function getAverage(value1, value2) {
  *   (-5,0) (10,-10) => 18.027756377319946
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-  //throw new Error('Not implemented');
-  return Math.sqrt(( y1 - y2)**2 + (x1 - x2)**2);
+  // throw new Error('Not implemented');
+  return Math.sqrt((y1 - y2) ** 2 + (x1 - x2) ** 2);
 }
 
 /**
@@ -91,8 +91,8 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-  //throw new Error('Not implemented');
-  return (b*-1)/a;
+  // throw new Error('Not implemented');
+  return (b * -1) / a;
 }
 
 
@@ -115,10 +115,10 @@ function getLinearEquationRoot(a, b) {
  *   (0,1) (1,2)     => 0
  */
 function getAngleBetweenVectors(x1, y1, x2, y2) {
-  //throw new Error('Not implemented');
-  const multiplication = x1*y1+x2*y2;
-  const moduleOne = Math.sqrt(Math.pow(x1, 2) + Math.pow(y1, 2));
-  const moduleTwo = Math.sqrt(Math.pow(x2, 2) + Math.pow(y2, 2));
+  // throw new Error('Not implemented');
+  const multiplication = x1 * x2 + y1 * y2;
+  const moduleOne = Math.sqrt(x1 ** 2 + y1 ** 2);
+  const moduleTwo = Math.sqrt(x2 ** 2 + y2 ** 2);
   return Math.acos(multiplication / (moduleOne * moduleTwo));
 }
 
@@ -135,8 +135,8 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-  //throw new Error('Not implemented');
-  return Number(value.toString().split("")[value.toString().length - 1]);
+  // throw new Error('Not implemented');
+  return Number(value.toString().split('')[value.toString().length - 1]);
 }
 
 
@@ -152,7 +152,7 @@ function getLastDigit(value) {
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
-  //throw new Error('Not implemented');
+  // throw new Error('Not implemented');
   return Number(value);
 }
 
@@ -170,8 +170,8 @@ function parseNumberFromString(value) {
  *   1,2,3   => 3.741657386773941
  */
 function getParallelepipedDiagonal(a, b, c) {
-  //throw new Error('Not implemented');
-  return Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2)+ Math.pow(c, 2))
+  // throw new Error('Not implemented');
+  return Math.sqrt(a ** 2 + b ** 2 + c ** 2);
 }
 
 
@@ -193,21 +193,12 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-  //throw new Error('Not implemented');
+  // throw new Error('Not implemented');
   const arr = num.toString().split('').reverse();
   arr.splice(pow, 0, '.');
-  const numChange =Math.round(Number(arr.reverse().join('')));
-  const arrChange = numChange.toString().split('');
-  const totalArr = arr.map((el, indx) =>{
-    if(el !== '.'){
-    if(indx > arrChange.length){
-      return '0';
-    }else{
-      return arrChange[indx];
-    }}
-  })
-  const result = totalArr.join('');
-  return Number(result)
+  arr.reverse().join('');
+  const result = arr.join('');
+  return Math.round(Number(result)) * 10 ** pow;
 }
 
 /**
@@ -228,21 +219,21 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-  //throw new Error('Not implemented');
-  let i =2;
-  if(n<i){
+  // throw new Error('Not implemented');
+  let i = 2;
+  if (n < i) {
     return false;
   }
-  if(n === i){
+  if (n === i) {
     return true;
   }
-  while(i <= Math.sqrt(n)){
-    if(n % i === 0){
-      return false
+  while (i <= Math.sqrt(n)) {
+    if (n % i === 0) {
+      return false;
     }
-    i++;
+    i += 1;
   }
-  return true
+  return true;
 }
 
 /**
@@ -261,18 +252,16 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-  //throw new Error('Not implemented');
-  if(typeof Number(value) === 'number' && !isNaN(Number(value))){
+  // throw new Error('Not implemented');
+  if (typeof Number(value) === 'number' && !Number.isNaN(Number(value))) {
     return Number(value);
   }
-  else if (typeof Number(value) === 'object'){
-    if (typeof Number(value.value) === 'number'){
-    return Number(value.value);
+  if (typeof Number(value) === 'object') {
+    if (typeof Number(value.value) === 'number') {
+      return Number(value.value);
+    }
   }
-  }
-  else{
-    return def;
-  }
+  return def;
 }
 
 module.exports = {
